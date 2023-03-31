@@ -22,7 +22,7 @@ const Single = (props) => {
     </div>
     </div>
     </div>
-    <p className='text-4xl font-bold'>{blog_title}</p>
+    <p className='text-2xl md:text-4xl font-bold'>{blog_title}</p>
     <div className="card-actions">
       <button onClick={()=>handleRead(read_time)} className="text-blue-500">Mark as read</button>
     </div>

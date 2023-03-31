@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Single from '../Single/Single';
 import Sidebar from '../Sidebar/Sidebar';
-
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const Blogs = () => {
@@ -20,7 +20,7 @@ const Blogs = () => {
         const getBooks = JSON.parse(localStorage.getItem("bookmark"));
         const a = getBooks?.filter(b=> b==book)
         if(a[0]){
-            console.log(a);
+            toast("You have already bookmarked this")
         }
         const newlydone = [...getBooks,book]
         localStorage.setItem("bookmark",JSON.stringify(newlydone))
@@ -51,7 +51,7 @@ const Blogs = () => {
             blogs.map(blog=><Single key={blog.id} blog={blog} handleRead={handleRead} handleSideBar={handleSideBar}></Single>)
            }
         </div>
-        <div className='w-fit md:w-2/5'>
+        <div className='w-auto md:w-2/5'>
         <Sidebar readTime={readTime} bookmarks={bookmarks}></Sidebar>
         </div>
         </div>
