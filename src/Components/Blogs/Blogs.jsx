@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Single from '../Single/Single';
+import Sidebar from '../Sidebar/Sidebar';
 
 
 
@@ -11,14 +12,14 @@ const Blogs = () => {
         .then(data=>setBlogs(data))
     },[])
     return (
-        <div>
-        <div>
+        <div className='flex gap-3'>
+        <div className='w-9/12'>
            {
             blogs.map(blog=><Single key={blog.id} blog={blog}></Single>)
            }
         </div>
-        <div>
-
+        <div className='w-2/5'>
+        <Sidebar></Sidebar>
         </div>
         </div>
     );
