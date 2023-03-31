@@ -18,7 +18,7 @@ const Single = (props) => {
     <div>
     <div className='flex gap-2'>
     <p>0<span>{read_time}</span> min read</p>
-    <button onClick={()=>handleSideBar(props.blog)}><FontAwesomeIcon icon={faBookmark} /></button>
+    <button onClick={()=>handleSideBar(blog_title)}><FontAwesomeIcon icon={faBookmark} /></button>
     </div>
     </div>
     </div>

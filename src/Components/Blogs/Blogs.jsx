@@ -15,20 +15,43 @@ const Blogs = () => {
     const handleSideBar= (book)=>
     {
       const newBook = [...bookmarks,book];
-      setBookmarks(newBook);
+      const previousBook = localStorage.getItem("bookmark");
+      if(previousBook){
+        const getBooks = JSON.parse(localStorage.getItem("bookmark"));
+        const a = getBooks?.filter(b=> b==book)
+        if(a[0]){
+            console.log(a);
+        }
+        const newlydone = [...getBooks,book]
+        localStorage.setItem("bookmark",JSON.stringify(newlydone))
+        setBookmarks(newlydone);
+      }
+      else{
+        localStorage.setItem("bookmark",JSON.stringify(newBook))
+        setBookmarks(newBook);
+      }
     }
-    const [readTime,setReadTime] = useState(0)
-    const handleRead = (r) =>{
-        setReadTime(readTime+r);
+    const [readTime,setReadTime] = useState(0);
+    const handleRead = (time) =>{
+        const previousTime = JSON.parse(localStorage.getItem("readTime"));
+        if(previousTime){
+            const sum = previousTime + time;
+            localStorage.setItem("readTime",sum)
+            setReadTime(sum)
+        }
+        else{
+            localStorage.setItem("readTime",time)
+            setReadTime(time)
+        }
     }
     return (
-        <div className='flex gap-3'>
-        <div className='w-9/12'>
+        <div className='flex flex-col md:flex-row gap-3'>
+        <div className='w-fit md:w-9/12'>
            {
             blogs.map(blog=><Single key={blog.id} blog={blog} handleRead={handleRead} handleSideBar={handleSideBar}></Single>)
            }
         </div>
-        <div className='w-2/5'>
+        <div className='w-fit md:w-2/5'>
         <Sidebar readTime={readTime} bookmarks={bookmarks}></Sidebar>
         </div>
         </div>
