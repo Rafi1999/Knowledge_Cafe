@@ -11,15 +11,25 @@ const Blogs = () => {
         .then(res=>res.json())
         .then(data=>setBlogs(data))
     },[])
+    const [bookmarks,setBookmarks] = useState([])
+    const handleSideBar= (book)=>
+    {
+      const newBook = [...bookmarks,book];
+      setBookmarks(newBook);
+    }
+    const [readTime,setReadTime] = useState(0)
+    const handleRead = (r) =>{
+        setReadTime(readTime+r);
+    }
     return (
         <div className='flex gap-3'>
         <div className='w-9/12'>
            {
-            blogs.map(blog=><Single key={blog.id} blog={blog}></Single>)
+            blogs.map(blog=><Single key={blog.id} blog={blog} handleRead={handleRead} handleSideBar={handleSideBar}></Single>)
            }
         </div>
         <div className='w-2/5'>
-        <Sidebar></Sidebar>
+        <Sidebar readTime={readTime} bookmarks={bookmarks}></Sidebar>
         </div>
         </div>
     );
