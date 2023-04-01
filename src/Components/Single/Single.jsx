@@ -13,7 +13,7 @@ const Single = (props) => {
   <div className="card-body">
   <div className='flex justify-between'>
   <div className='flex gap-3'>
-  <img className='rounded-full w-14 object-cover' src={author_img} alt="" />
+  <img className='w-10 rounded-full md:w-14 object-fill md:object-cover' src={author_img} alt="" />
     <div className='grid'><h2 className="card-title">{author_name}</h2><p>{publish_date}</p></div></div>
     <div>
     <div className='flex gap-2'>
