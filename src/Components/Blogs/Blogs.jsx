@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 const Blogs = () => {
     const [blogs,setBlogs] = useState([]);
     useEffect(()=>{
-        fetch('products.json')
+        fetch('./products.json')
         .then(res=>res.json())
         .then(data=>setBlogs(data))
     },[])
